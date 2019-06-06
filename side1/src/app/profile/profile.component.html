@@ -1,0 +1,13 @@
+<app-header></app-header>
+<div class="container">
+ <!-- // <h1>Hi {{currentUser.firstname}}!</h1> -->
+
+<h3>All registered users:</h3>
+<ul>
+  <li *ngFor="let user of users">
+      {{user.email}} ({{user.firstname}} {{user.lastname}})
+      - <button (click)="deleteUser(user._id)" class="text-danger">Delete</button>
+  </li>
+</ul>
+  <!-- <button (click)="logout()">Log out</button> -->
+</div>
