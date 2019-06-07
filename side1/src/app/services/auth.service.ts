@@ -49,6 +49,7 @@ delete(_id: number) {
     localStorage.removeItem('ACCESS_TOKEN');
     localStorage.removeItem('USER_ID');
     localStorage.removeItem('USER_EMAIL');
+    localStorage.removeItem('CURRENT_USER')
   }
 
 
@@ -57,7 +58,13 @@ delete(_id: number) {
 export interface User {
   _id: string;
   firstname: string;
+  mellanname: string;
   lastname: string;
+  birthday: string;
+  addresslinefaktura: string;
+  invoicecity: string;
+  postnumber: string;
+  invoicecountry: string;
   addressline: string;
   zipcode: string;
   city: string;

@@ -1,7 +1,7 @@
 import { Component, OnInit, Output, EventEmitter, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { AuthService } from '../auth.service';
+import { AuthService } from '../services/auth.service';
 import { CookieService } from 'ngx-cookie-service'
 
 @Component({
@@ -47,6 +47,7 @@ export class LoginComponent implements OnInit {
       localStorage.setItem("ACCESS_TOKEN", res["token"]);
       localStorage.setItem("USER_ID", res["id"]);
       localStorage.setItem("USER_EMAIL", res["email"]);
+      localStorage.setItem("CURRENT_USER", JSON.stringify(res["currentuser"]))
 
       if(res["success"]) {
         this.cookieService.set('isLoggedIn', 'true', 2)

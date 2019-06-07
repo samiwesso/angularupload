@@ -35,7 +35,13 @@ exports.register = function(req, res) {
 
                                 _id:            new db.Types.ObjectId,
                                 firstname:      req.body.firstname,
+                                mellanname:     req.body.mellanname,   
                                 lastname:       req.body.lastname,
+                                addresslinefaktura: req.body.addresslinefaktura,
+                                invoicecity: req.body.invoicecity,
+                                postnumber: req.body.postnumber,
+                                invoicecountry:req.body.invoicecountry,
+                                birthday:       req.body.birthday,
                                 addressline:    req.body.addressline,
                                 zipcode:        req.body.zipcode,
                                 city:           req.body.city,
@@ -100,7 +106,8 @@ exports.login = function(req, res) {
                             success: true,
                             token: token,
                             id: user[0]._id,
-                            email: user[0].email
+                            email: user[0].email,
+                            currentuser: user[0]
                         })
                     }
 
@@ -114,8 +121,6 @@ exports.login = function(req, res) {
         })
 }
 
-
-// restricted
 exports.getUsers = function(req, res) {
     User.find()    
     .then(data => {

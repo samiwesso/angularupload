@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { AuthService, User } from '../auth.service';
+import { AuthService, User } from '../services/auth.service';
 import { Router } from '@angular/router';
 
 import { first } from 'rxjs/operators';
@@ -32,13 +32,5 @@ private loadAllUsers() {
       this.users = users;
   });
 }
-
-  // logout()
-  // {
-  //   this.authService.logout();
-  //   this.router.navigateByUrl('/');
-  // }
-
-
 
 }
