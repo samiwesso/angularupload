@@ -1,171 +1,213 @@
 <app-header></app-header>
-
+<!-- <div class="jumbotron"> -->
 <div class="container">
-
   <form [formGroup]="registerForm" (ngSubmit)="register()">
-
-
-    <div class="container">
-
-
-      <form [formGroup]="registerForm" (ngSubmit)="register()">
-
-
-        <div class="form-row">
-
-          <div class="form-group col-md-6">
-
-            <label for="name">Name</label>
-
-            <input type="text" formControlName="firstname" class="form-control" id="name" placeholder="Name">
-
+    <div class="form-row">
+      <div class="form-group col-md-5">
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text size" for="firstname" >First Name</span>
           </div>
-
-          <div class="form-group">
-
-            <label for="mellanname">mellanname</label>
-
-            <input type="text" class="form-control" formControlName="mellanname" id="mellanname"
-              aria-describedby="emailHelp" placeholder="Enter mellanname">
-
-            <small id="emailHelp" class="form-text text-muted">We'll never share your mellanname with anyone
-              else.</small>
-
+          <input type="text" formControlName="firstname" class="form-control" id="firstname" placeholder="Name"
+            aria-label="firstname"  [ngClass]="{ 'is-invalid': isSubmitted && f.firstname.errors }" />
+            <div *ngIf="isSubmitted && f.firstname.errors" class="invalid-feedback">
+                <div *ngIf="f.firstname.errors.required">First Name is required</div>
+            </div>
+        </div>
+      </div>
+      <div class="form-group col-md-5">
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text size" for="mellanname" id="addon-wrapping">Mellan Name</span>
           </div>
-
-          <div class="form-group col-md-6">
-
-            <label for="lastname">Lastname</label>
-
-            <input type="text" formControlName="lastname" class="form-control" id="lastname" placeholder="Lastname">
-
-          </div>
-
-
-
+          <input type="text" formControlName="mellanname" class="form-control" id="mellanname" placeholder="mellanname"
+            aria-label="mellanname" aria-describedby="addon-wrapping" [ngClass]="{ 'is-invalid': isSubmitted && f.mellanname.errors }" />
+            <div *ngIf="isSubmitted && f.mellanname.errors" class="invalid-feedback">
+                <div *ngIf="f.mellanname.errors.required"></div>
+            </div>
         </div>
-
-        <div class="form-group">
-
-          <label for="birthday">birthday</label>
-
-          <input type="date" class="form-control" formControlName="birthday" id="birthday" aria-describedby="emailHelp"
-            placeholder="Enter birthday">
-
-          <small id="emailHelp" class="form-text text-muted">We'll never share your birthday with anyone else.</small>
-
-        </div>
-
-        <div class="form-row">
-
-          <div class="form-group col-md-6">
-
-            <label for="inputEmail">Email</label>
-
-            <input type="email" formControlName="email" class="form-control" id="inputEmail" placeholder="Email">
-
-          </div>
-
-          <div class="form-group col-md-6">
-
-            <label for="inputPassword">Password</label>
-
-            <input type="password" type="password" formControlName="password" class="form-control" id="inputPassword"
-              placeholder="Password">
-
-          </div>
-
-        </div>
-
-
-        <div class="form-group">
-
-          <label for="Addresslinefaktura">Fakturering addres</label>
-
-          <input type="text" class="form-control" formControlName="addresslinefaktura" id="Addresslinefaktura"
-            aria-describedby="emailHelp" placeholder="Enter Addresslinefaktura">
-
-
-          <small id="emailHelp" class="form-text text-muted">We'll never share your Addresslinefaktura with anyone
-            else.</small>
-
-        </div>
-
-        <div class="form-group col-md-6">
-
-          <label for="postnumber"> faktura post number</label>
-
-          <input type="text" formControlName="postnumber" class="form-control" id="postnumber"
-            placeholder="faktura post number">
-
-        </div>
-        <div class="form-group col-md-6">
-
-          <label for="invoicecity"> invoice City</label>
-
-          <input type="text" formControlName="invoicecity" class="form-control" id="invoicecity"
-            placeholder="invoicecity">
-
-        </div>
-        <div class="form-group col-md-6">
-
-            <label for="invoicecountry"> country</label>
-  
-            <input type="text" formControlName="invoicecountry" class="form-control" id="invoicecountry"
-              placeholder="invoicecountry">
-  
-          </div>
-
-        <div class="form-group">
-
-          <label for="Addressline">Addressline</label>
-
-          <input type="text" class="form-control" formControlName="addressline" id="Addressline"
-            aria-describedby="emailHelp" placeholder="Enter Addressline">
-
-          <small id="emailHelp" class="form-text text-muted">We'll never share your Addressline with anyone
-            else.</small>
-
-        </div>
-
-        <div class="form-row">
-
-          <div class="form-group col-md-6">
-
-            <label for="inputCity">City</label>
-
-            <input type="text" formControlName="city" class="form-control" id="inputCity" placeholder="City">
-
-          </div>
-
-
-          <div class="form-group col-md-6">
-
-            <label for="inputZip">Zip</label>
-
-            <input type="text" formControlName="zipcode" class="form-control" id="inputZip" placeholder="Zip">
-
-          </div>
-
-          <div class="form-group col-md-6">
-
-            <label for="inputAddress">Address</label>
-
-            <input type="text" class="form-control" formControlName="addressline" id="inputAddress"
-              placeholder="1234 Main St">
-
-          </div>
-
-        </div>
-
-        <div class="form-group col-md-6">
-
-          <input class="btn btn-info" type="submit" value="Register">
-
-
-
-        </div>
-
-      </form>
-
+      </div>
     </div>
+    <div class="form-row">
+      <div class="form-group col-md-5">
+        <div class="input-group ">
+          <div class="input-group-prepend">
+            <span class="input-group-text size" for="lastname" id="addon-wrapping">Last name</span>
+          </div>
+          <input type="text" formControlName="lastname" class="form-control" id="lastname" placeholder="lastname"
+            aria-label="lastname" aria-describedby="addon-wrapping"  [ngClass]="{ 'is-invalid': isSubmitted && f.lastname.errors }" />
+            <div *ngIf="isSubmitted && f.lastname.errors" class="invalid-feedback">
+                <div *ngIf="f.lastname.errors.required">Last Name is required</div>
+            </div>
+        </div>
+      </div>
+      <br>
+      <div class="form-group col-md-4">
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text size1" for="birthday" id="addon-wrapping">birthday</span>
+          </div>
+          <input type="date" formControlName="birthday" class="form-control" id="birthday" placeholder="Enter birthday"
+            aria-label="birthday" aria-describedby="emailHelp" [ngClass]="{ 'is-invalid': isSubmitted && f.birthday.errors }" />
+            <div *ngIf="isSubmitted && f.birthday.errors" class="invalid-feedback">
+                <div *ngIf="f.birthday.errors.required">Birth day is required</div>
+            </div>
+        </div>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-10">
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text size1" for="email" id="addon-wrapping">Email</span>
+          </div>
+          <input type="email" formControlName="email" class="form-control" id="email" placeholder="Enter your email"
+            aria-label="email" aria-describedby="emailHelp" [ngClass]="{ 'is-invalid': isSubmitted && f.email.errors }" />
+            <div *ngIf="isSubmitted && f.email.errors" class="invalid-feedback">
+                <div *ngIf="f.email.errors.required">Email is required</div>
+                <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
+            </div>
+        </div>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-10">
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text size1" for="password" id="addon-wrapping">Password</span>
+          </div>
+          <input type="password" formControlName="password" class="form-control" id="password"
+            placeholder="Enter your password" aria-label="password" aria-describedby="emailHelp"  [ngClass]="{ 'is-invalid': isSubmitted && f.password.errors }" />
+            <div *ngIf="isSubmitted && f.password.errors" class="invalid-feedback">
+                <div *ngIf="f.password.errors.required">Password is required</div>
+                <div *ngIf="f.password.errors.minlength">Password must be at least 3 characters</div>
+            </div>
+        </div>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-5">
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text size" for="addresslinefaktura" id="addon-wrapping">invoice address</span>
+          </div>
+          <input type="text" formControlName="addresslinefaktura" class="form-control" id="addresslinefaktura"
+            placeholder="addresslinefaktura" aria-label="addresslinefaktura" aria-describedby="addon-wrapping" [ngClass]="{ 'is-invalid': isSubmitted && f.addresslinefaktura.errors }" />
+            <div *ngIf="isSubmitted && f.addresslinefaktura.errors" class="invalid-feedback">
+                <div *ngIf="f.addresslinefaktura.errors.required">Information is required</div>
+            </div>
+        </div>
+      </div>
+      <br>
+      <div class="form-group col-md-3">
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text size1" for="postnumber" id="addon-wrapping">postnumber</span>
+          </div>
+          <input type="text" formControlName="postnumber" class="form-control" id="postnumber" placeholder="722 72"
+            aria-label="postnumber" aria-describedby="emailHelp" [ngClass]="{ 'is-invalid': isSubmitted && f.postnumber.errors }" />
+            <div *ngIf="isSubmitted && f.addresslinefaktura.errors" class="invalid-feedback">
+                <div *ngIf="f.postnumber.errors.required"></div>
+            </div>
+        </div>
+      </div>
+    </div>
+    <br>
+    <div class="form-row">
+        <div class="form-group col-md-5">
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text size" for="invoicecity" id="addon-wrapping">inv. city</span>
+            </div>
+            <input type="text" formControlName="invoicecity" class="form-control" id="invoicecity"
+              placeholder="invoicecity" aria-label="invoicecity" aria-describedby="addon-wrapping" [ngClass]="{ 'is-invalid': isSubmitted && f.invoicecity.errors }" />
+              <div *ngIf="isSubmitted && f.invoicecity.errors" class="invalid-feedback">
+                  <div *ngIf="f.invoicecity.errors.required"></div>
+              </div>
+          </div>
+        </div>
+        <br>
+        <div class="form-group col-md-5">
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text size1" for="invoicecountry" >inv. country</span>
+            </div>
+            <input type="text" formControlName="invoicecountry" class="form-control" id="invoicecountry" placeholder="Invoice country"  [ngClass]="{ 'is-invalid': isSubmitted && f.invoicecountry.errors }" />
+            <div *ngIf="isSubmitted && f.invoicecountry.errors" class="invalid-feedback">
+                <div *ngIf="f.invoicecountry.errors.required"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+<div>
+    <div class="form-row">
+        <div class="form-group col-md-5">
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text size" for="addressline" id="addon-wrapping">delivery address</span>
+            </div>
+            <input type="text" formControlName="addressline" class="form-control" id="addressline"
+              placeholder="addressline" aria-label="addressline" aria-describedby="addon-wrapping"  [ngClass]="{ 'is-invalid': isSubmitted && f.addressline.errors }" />
+              <div *ngIf="isSubmitted && f.addressline.errors" class="invalid-feedback">
+                  <div *ngIf="f.addressline.errors.required"></div>
+              </div>
+          </div>
+        </div>
+        <br>
+        <div class="form-group col-md-3">
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text size1" for="zipcode" id="addon-wrapping">zip code</span>
+            </div>
+            <input type="text" formControlName="zipcode" class="form-control" id="zipcode" placeholder="722 72"
+              aria-label="zipcode" aria-describedby="emailHelp"  [ngClass]="{ 'is-invalid': isSubmitted && f.zipcode.errors }" />
+              <div *ngIf="isSubmitted && f.zipcode.errors" class="invalid-feedback">
+                  <div *ngIf="f.zipcode.errors.required"></div>
+              </div>
+          </div>
+        </div>
+      </div>
+      <br>
+      <div class="form-row">
+          <div class="form-group col-md-5">
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text size" for="city" id="addon-wrapping">deliv. city</span>
+              </div>
+              <input type="text" formControlName="city" class="form-control" id="city"
+                placeholder="city" aria-label="city" aria-describedby="addon-wrapping" [ngClass]="{ 'is-invalid': isSubmitted && f.city.errors }" />
+                <div *ngIf="isSubmitted && f.city.errors" class="invalid-feedback">
+                    <div *ngIf="f.city.errors.required"></div>
+                </div>
+            </div>
+          </div>
+          <br>
+          <div class="form-group col-md-5">
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text size1" for="deliverycountry" id="addon-wrapping">delivery. country</span>
+              </div>
+              <input type="text" formControlName="invoicecountry" class="form-control" id="deliverycountry" placeholder="Invoice country"
+                aria-label="deliverycountry" aria-describedby="emailHelp"  [ngClass]="{ 'is-invalid': isSubmitted && f.invoicecountry.errors }" />
+                <div *ngIf="isSubmitted && f.invoicecountry.errors" class="invalid-feedback">
+                    <div *ngIf="f.invoicecountry.errors.required"></div>
+                </div>
+            </div>
+          </div>
+        </div>
+</div>
+      <div class="form-group col-md-6">
+      <input class="btn btn-primary" type="submit" value="Register">
+    </div>
+  </form>
+</div>
+<!-- </div> -->
+<style>
+  .size {
+    width: 125px;
+  }
+
+  .size1 {
+    width: 100px;
+  }
+</style>

@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-// import { User } from './user';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({
@@ -32,7 +31,11 @@ getById(_id: number) {
     return this.http.post(`${this._apiurl}/users/register`, _id);
   }
   update(user: User) {
-    return this.http.put(`${this._apiurl}/users/${user._id}`, user);
+    console.log(user)
+    return this.http.patch(`${this._apiurl}/users/${localStorage.getItem("USER_ID")}`, user,{
+      headers:{
+          'authorization': 'bearer ' + localStorage.getItem('ACCESS_TOKEN')
+      }});
 }
 delete(_id: number) {
   return this.http.delete(`${this._apiurl}/users/${_id}`,{

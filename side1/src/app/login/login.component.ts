@@ -11,13 +11,19 @@ import { CookieService } from 'ngx-cookie-service'
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private authService: AuthService, private router: Router,private cookieService: CookieService, private formBuilder: FormBuilder) { }
+  constructor(
+    private authService: AuthService,
+     private router: Router,
+     private cookieService: CookieService,
+      private formBuilder: FormBuilder) { }
 
   loginForm: FormGroup;
   isSubmitted: boolean = false;
   SignedIn: boolean = false;
 
-  get formControls() { return this.loginForm.controls }
+
+  // get formControls() { return this.registerForm.controls }
+  get f() { return this.loginForm.controls }
 
   ngOnInit() {
     if(this.cookieService.check('isLoggedIn'))
@@ -26,8 +32,8 @@ export class LoginComponent implements OnInit {
     } 
 
     this.loginForm = this.formBuilder.group({
-      email: ['', Validators.required],
-      password: ['', Validators.required]
+      email: ['', [Validators.required, Validators.email ]],
+      password: ['', [Validators.required, Validators.minLength(3)]]
 
     })
   }
@@ -59,47 +65,3 @@ export class LoginComponent implements OnInit {
 
   }
 }
-
-
-
-// import { Component, OnInit } from '@angular/core';
-// import { Router } from '@angular/router';
-// import { CookieService } from 'ngx-cookie-service';
-// import { AuthService, User } from '../auth.service';
-// import { Subscription } from 'rxjs';
-
-// @Component({
-//   selector: 'app-header',
-//   templateUrl: './header.component.html',
-//   styleUrls: ['./header.component.css']
-// })
-// export class HeaderComponent implements OnInit {
-
-//   currentUser: User;
-//   currentUserSubscription: Subscription;
-//   users: User[] = [];
-
-//   constructor(
-//     private authService: AuthService,
-//     private router: Router,
-//      private cookieService: CookieService
-//      ) { }
-  
-//   isLoggedIn: boolean = this.cookieService.check('isLoggedIn')
-
-//   ngOnInit() {
-
-//   }
-
-//   logout() {
-//     this.isLoggedIn = false;
-//     this.cookieService.deleteAll()
-//     this.router.navigateByUrl('/')
-//     // localStorage.removeItem('ACCESS_TOKEN');
-//     // localStorage.removeItem('USER_ID');
-//     // localStorage.removeItem('USER_EMAIL');
-//   }
-
-// }
-
-

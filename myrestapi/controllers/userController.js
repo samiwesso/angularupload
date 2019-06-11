@@ -127,8 +127,31 @@ exports.getUsers = function(req, res) {
         res.status(200).json(data)
     })
 }
-exports.getUser = function(req, res) {}
-exports.updateUser = function(req, res) {}
+exports.getUser = function(req, res) {
+    User.findOne({ _id: req.params.id })              
+    .then((data) => res.status(200).json(data))
+    .catch((error) => res.status(500).json(error))
+
+}
+exports.updateUser = function(req, res) {
+    User.updateOne({ _id: req.params.id }, req.body)
+    .then((data) => {    
+        if(!data) {
+            return res.status(404).json({
+                message: 'Användaren uppdaterades inte i databasen!'
+            }).end()
+        }
+        return res.status(200).json({
+            message: 'Användaren uppdateras i databasen'
+        })
+    })
+    .catch((error) => {
+        res.status(500).json({
+            message: 'Användaren uppdaterades inte i databasen!',
+            error: error
+        })
+    })  
+}
 exports.deleteUser = function(req, res) {
     User.deleteOne({ _id: req.params.id })
     .then(() => {

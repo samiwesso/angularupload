@@ -28,8 +28,8 @@ deleteUser(_id: number) {
   });
 }
 private loadAllUsers() {
-  this.authService.getAll().pipe(first()).subscribe(users => {
-      this.users = users;
+  this.authService.getAll().pipe(first()).subscribe(user => {
+      this.users = user;
   });
 }
 

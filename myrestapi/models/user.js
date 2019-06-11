@@ -6,7 +6,7 @@ const userSchema = db.Schema({
     firstname:      { type: String, required: true },
     mellanname:     { type: String, required: true },
     lastname:       { type: String, required: true },
-    birthday:       { type: String, required: true },
+    birthday:       { type: String },
     addresslinefaktura:  { type: String, required: true },
     invoicecity:    { type: String, required: true },
     invoicecountry:{ type: String, required: true },
